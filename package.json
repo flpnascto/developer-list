@@ -1,0 +1,32 @@
+{
+  "name": "developer-list",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flpnascto/developer-list.git"
+  },
+  "keywords": [],
+  "author": "Felipe Nascimento",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flpnascto/developer-list/issues"
+  },
+  "homepage": "https://github.com/flpnascto/developer-list#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.29.0",
+    "nodemon": "^2.0.7",
+    "sequelize-cli": "^6.2.0"
+  }
+}
