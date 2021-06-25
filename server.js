@@ -1,5 +1,6 @@
 const express = require('express');
 const routes = require('./routes');
+const errorController = require('./controllers/errorController');
 
 const app = express();
 app.use(express.json());
@@ -11,3 +12,4 @@ app.get('/', (_request, response) => {
 });
 
 app.use('/', routes);
+app.use(errorController);

@@ -1,6 +1,10 @@
 const { Developer } = require('../models');
+const { developerValidation, ValidateException } = require('./validations');
 
 const createDeveloper = async (dataDeveloper) => {
+  const { error } = developerValidation(dataDeveloper);
+  if (error) throw new ValidateException(error.message);
+
   const {
     nome, telefone, celular, cepId,
   } = dataDeveloper;
