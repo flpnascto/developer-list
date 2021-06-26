@@ -18,9 +18,5 @@ module.exports = (sequelize, DataTypes) => {
     },
   );
 
-  PostalCode.associate = (models) => {
-    PostalCode.hasOne(models.Developer);
-  };
-
   return PostalCode;
 };

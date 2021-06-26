@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Developer.associate = (models) => {
     Developer.belongsTo(models.PostalCode,
-      { foreignKey: 'id', as: 'cep' });
+      { foreignKey: 'id', as: 'address' });
   };
 
   return Developer;
