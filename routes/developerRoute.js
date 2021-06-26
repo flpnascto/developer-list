@@ -2,7 +2,7 @@ const router = require('express').Router();
 const developer = require('../controllers/DeveloperController');
 
 router.route('/')
-  .get()
+  .get(developer.getAllDevelopers)
   .post(developer.createDeveloper)
   .put()
   .delete();

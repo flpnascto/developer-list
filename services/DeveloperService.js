@@ -1,8 +1,11 @@
 const Sequelize = require('sequelize');
 const config = require('../config/config');
-const { Developer, DevelopersSpecialty } = require('../models');
+const {
+  Developer, PostalCode, Specialty, DevelopersSpecialty,
+} = require('../models');
 const { createPostalCode } = require('./PostalCodeService');
 const { developerValidation, ValidateException } = require('./validations');
+const CODE = require('../config/statusCode');
 
 const sequelize = new Sequelize(config.development);
 
@@ -42,9 +45,23 @@ const createDeveloper = async (dataDeveloper) => {
   const cepId = await createPostalCode(dataDeveloper.cep);
   const developer = await transactionCreate({ ...dataDeveloper, cepId });
 
-  return { statusCode: 200, developer };
+  return { statusCode: CODE.OK, developer };
+};
+
+const getAllDevelopers = async () => {
+  const developers = await Developer.findAll(
+    {
+      include: [
+        { model: PostalCode, as: 'address' },
+        { model: Specialty, as: 'specialties', through: { attributes: [] } },
+      ],
+    },
+  );
+
+  return { statusCode: CODE.OK, developers };
 };
 
 module.exports = {
   createDeveloper,
+  getAllDevelopers,
 };
