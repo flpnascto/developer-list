@@ -19,7 +19,19 @@ const getAllDevelopers = async (_req, res, next) => {
   }
 };
 
+const findDevelopersBySpecialty = async (req, res, next) => {
+  const { id } = req.params;
+  console.log('specialtyId', id);
+  try {
+    const { statusCode, developers } = await Developer.findDevelopersBySpecialty(id);
+    res.status(statusCode).json(developers);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createDeveloper,
   getAllDevelopers,
+  findDevelopersBySpecialty,
 };

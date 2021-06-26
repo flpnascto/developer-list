@@ -61,7 +61,23 @@ const getAllDevelopers = async () => {
   return { statusCode: CODE.OK, developers };
 };
 
+const findDevelopersBySpecialty = async (specialtyId) => {
+  const developers = await Developer.findAll(
+    {
+      include: [
+        { model: PostalCode, as: 'address' },
+        {
+          model: Specialty, as: 'specialties', through: { attributes: [] }, where: { id: specialtyId },
+        },
+      ],
+    },
+  );
+
+  return { statusCode: CODE.OK, developers };
+};
+
 module.exports = {
   createDeveloper,
   getAllDevelopers,
+  findDevelopersBySpecialty,
 };
