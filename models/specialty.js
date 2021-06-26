@@ -1,14 +1,18 @@
-module.exports = (sequelize, DataTypes) => sequelize.define(
-  'Specialty',
-  {
-    id: {
-      primaryKey: true,
-      autoIncrement: true,
-      type: DataTypes.INTEGER,
+module.exports = (sequelize, DataTypes) => {
+  const Specialty = sequelize.define(
+    'Specialty',
+    {
+      id: {
+        primaryKey: true,
+        autoIncrement: true,
+        type: DataTypes.INTEGER,
+      },
+      nome: DataTypes.STRING,
     },
-    nome: DataTypes.STRING,
-  },
-  {
-    timestamps: false,
-  },
-);
+    {
+      timestamps: false,
+    },
+  );
+
+  return Specialty;
+};
