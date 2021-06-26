@@ -1,4 +1,5 @@
 const { Developer } = require('../models');
+const { createPostalCode } = require('./PostalCodeService');
 const { developerValidation, ValidateException } = require('./validations');
 
 const createDeveloper = async (dataDeveloper) => {
@@ -6,8 +7,11 @@ const createDeveloper = async (dataDeveloper) => {
   if (error) throw new ValidateException(error.message);
 
   const {
-    nome, telefone, celular, cepId,
+    nome, telefone, celular, cep,
   } = dataDeveloper;
+
+  const cepId = await createPostalCode(cep);
+
   const developer = await Developer.create({
     nome, telefone, celular, cepId,
   });
