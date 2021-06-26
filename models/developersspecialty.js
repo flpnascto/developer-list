@@ -8,15 +8,15 @@ module.exports = (sequelize, _DataTypes) => {
     models.Developer.belongsToMany(models.Specialty, {
       as: 'specialties',
       through: DevelopersSpecialty,
-      foreignKey: 'developerId',
-      otherKey: 'specialtyId',
+      foreignKey: 'developer_id',
+      otherKey: 'specialty_id',
     });
 
     models.Specialty.belongsToMany(models.Developer, {
       as: 'developers',
       through: DevelopersSpecialty,
-      foreignKey: 'specialtyId',
-      otherKey: 'developerId',
+      foreignKey: 'specialty_id',
+      otherKey: 'developer_id',
     });
   };
   DevelopersSpecialty.removeAttribute('id');
