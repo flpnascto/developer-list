@@ -1,3 +1,21 @@
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     DevelopersSpecialty:
+ *       type: object
+ *       properties:
+ *         developer_id:
+ *           type: integer
+ *           description: Foreign key associate with id in model Developer
+ *         specialty_id:
+ *           type: integer
+ *           description: Foreign key associate with id in model Specialty
+ *       example:
+ *         id: 1
+ *         nome: 1
+ */
+
 module.exports = (sequelize, _DataTypes) => {
   const DevelopersSpecialty = sequelize.define(
     'DevelopersSpecialty',
